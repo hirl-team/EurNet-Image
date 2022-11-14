@@ -1,0 +1,77 @@
+runner: ClassificationRunner
+
+# dataset configs
+dataset: imagenet
+data_path: "./datasets/Imagenet1K/ILSVRC/Data/CLS-LOC/"
+num_class: 1000
+
+input_size: 384
+color_jitter: 0.4
+auto_aug_policy: "rand-m9-mstd0.5-inc1"
+reprob: 0.25
+remode: "pixel"
+recount: 1
+test_crop: False
+
+mixup: 0
+cutmix: 0
+cutmix_minmax: null
+mixup_prob: 1.0
+mixup_switch_prob: 0.5
+mixup_mode: "batch"
+smoothing: 0.1
+
+# model configs
+arch: eurnet
+patch_size: 4
+model_kwargs:
+  hidden_dim: 128
+  depths: [2, 2, 18, 2]
+  medium_stages: [1, 2, 3]
+  edge_types: ["short", "medium", "long"]
+  num_neighbors: [12, 12, 12, 12]
+  virtual_node: True
+  readout: "mean"
+  context_relation: True
+  context_sizes: [3, 5]
+  ffn_ratio: 4.0
+  drop_rate: 0.0
+  drop_path_rate: 0.2
+  ape: True
+  patch_norm: True
+  head_init_scale: 0.001
+
+# optimization configs
+optimizer:
+  name: "AdamW"
+  params:
+    eps: 1.0e-8
+    betas: [0.9, 0.999]
+    weight_decay: 1.0e-8
+
+lr: 3.0e-5
+start_lr: 3.0e-8
+min_lr: 3.0e-7
+clip_grad: 5.0
+cos: True
+layer_decay: 0.9
+
+# training configs
+epochs: 30
+warmup_epochs: 5
+batch_size: 16
+num_workers: 8
+accum_iter: 8
+repeated_aug: False
+dist_eval: True
+use_fp16: True
+seed: 0
+
+autoresume: True
+resume: null
+pretrained: "./experiments/classification/imagenet22k/eurnet_base_90eps/latest.pth"
+log_interval: 50
+save_interval: 5
+
+output_dir: "./experiments/classification/imagenet1k/eurnet_base_22kto1k_384_ft_30eps/"
+dist_url: "env://"
