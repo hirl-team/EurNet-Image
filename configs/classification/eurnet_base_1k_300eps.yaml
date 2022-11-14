@@ -70,5 +70,5 @@ pretrained: ""
 log_interval: 50
 save_interval: 10
 
-output_dir: "./experiments/classification/imagenet1k/eurnet_base_300eps/"
+output_dir: "./experiments/classification/imagenet1k/eurnet_base_300eps_pyg/"
 dist_url: "env://"

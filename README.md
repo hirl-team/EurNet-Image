@@ -1,9 +1,8 @@
 # EurNet: Efficient Multi-Range Relational Modeling of Spatial Multi-Relational Data
 
 This repository provides the PyTorch implementation of the paper [EurNet: Efficient Multi-Range Relational Modeling of Spatial Multi-Relational Data]().
-This repository contains complete source code and model weights for the **image classification** experiments in the paper. 
-Currently, we release all source code and model weights of EurNet for *image modeling*. 
-The codes and model weights for *protein* and *knowledge graph* modeling will be released soon after refactor.
+This branch is the **PyTorch Geometric** implementation of EurNet for image classification.
+This branch provides source code and model weights for EurNet-T/S/B trained from scratch on ImageNet-1K.
 
 <p align="center">
   <img src="resources/eurnet.png"/> 
@@ -12,7 +11,7 @@ The codes and model weights for *protein* and *knowledge graph* modeling will be
 EurNet employs the Gated Relational Message Passing (GRMP) layer as its basic component, as graphically shown above.
 EurNet can be applied to various domains (e.g., images, protein structures and knowledge graphs) for efficient multi-relational modeling at scale.
 Here are the links to other applied domains/tasks of this project:
-- [EurNet for Image Classification (PyTorch Geometric implementation)]()
+- [EurNet for Image Classification (TorchDrug implementation)](https://github.com/hirl-team/EurNet-Image/tree/main)
 - [EurNet for Object Detection]()
 - [EurNet for Semantic Segmentation]()
 - EurNet for Protein Structure Modeling (*Working, will release soon*)
@@ -27,15 +26,14 @@ Here are the links to other applied domains/tasks of this project:
 
 ## Benchmark and Model Zoo
 
-|    Model     |   Training    | #Params. (M) | FLOPs (G) | IN-1K Top-1 (%) |                                                         Config                                                         |   Ckpt   |   Log   |
-|:------------:|:-------------:|:------------:|:------:|:---------------:|:----------------------------------------------------------------------------------------------------------------------:|:--------:|:-------:|
-|   EurNet-T   |  1K-scratch   | 29 | 4.6 |      82.3       |    [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_tiny_1k_300eps.yaml)     | [ckpt]() | [log]() |
-|   EurNet-S   |  1K-scratch   | 50 | 8.8 |      83.6       |    [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_small_1k_300eps.yaml)    | [ckpt]() | [log]() |
-|   EurNet-B   |  1K-scratch   | 89 | 15.6 |      84.1       |    [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_base_1k_300eps.yaml)     | [ckpt]() | [log]() |
-|   EurNet-B   | 22K-pretrain  | 89 | 15.6 |        -        |    [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_base_22k_90eps.yaml)     | [ckpt]() |    -    |
-| EurNet-B/384 | 224to384-tune | 90 | 46.6 | 85.4 | [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_base_1k_384_ft_30eps.yaml)  | [ckpt]() | [log]() |
-| EurNet-B | 22Kto1K-tune | 89 | 15.6 | 85.7 | [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_base_22kto1k_224_ft_30eps.yaml) | [ckpt]() | [log]() |
-| EurNet-B/384 | 22Kto1K-tune | 90 | 46.6 | 87.0 | [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_base_22kto1k_384_ft_30eps.yaml) | [ckpt]() | [log]() |
+|        Model         |   Training    | #Params. (M) | FLOPs (G) | IN-1K Top-1 (%) |                                                         Config                                                         |   Ckpt   |   Log   |
+|:--------------------:|:-------------:|:------------:|:------:|:---------------:|:----------------------------------------------------------------------------------------------------------------------:|:--------:|:-------:|
+| EurNet-T (TorchDrug) |  1K-scratch   | 29 | 4.6 |      82.3       |    [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_tiny_1k_300eps.yaml)     | [ckpt]() | [log]() |
+|    EurNet-T (PyG)    |  1K-scratch   | 29 | 4.6 |      82.3       |    [config](https://github.com/hirl-team/EurNet-Image/blob/pyg-cls/configs/classification/eurnet_tiny_1k_300eps.yaml)     | [ckpt]() | [log]() |
+| EurNet-S (TorchDrug) |  1K-scratch   | 50 | 8.8 |      83.6       |    [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_small_1k_300eps.yaml)    | [ckpt]() | [log]() |
+|    EurNet-S (PyG)    |  1K-scratch   | 50 | 8.8 |      83.6       |    [config](https://github.com/hirl-team/EurNet-Image/blob/pyg-cls/configs/classification/eurnet_small_1k_300eps.yaml)    | [ckpt]() | [log]() |
+| EurNet-B (TorchDrug) |  1K-scratch   | 89 | 15.6 |      84.1       |    [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_base_1k_300eps.yaml)     | [ckpt]() | [log]() |
+|    EurNet-B (PyG)    |  1K-scratch   | 89 | 15.6 |      84.0       |    [config](https://github.com/hirl-team/EurNet-Image/blob/pyg-cls/configs/classification/eurnet_base_1k_300eps.yaml)     | [ckpt]() | [log]() |
 
 ## Installation
 
@@ -48,8 +46,8 @@ This repository is officially tested with the following environments:
 The environment could be prepared in the following steps:
 1. Create a virtual environment with conda:
 ```
-conda create -n eurnet python=3.7.3 -y
-conda activate eurnet
+conda create -n eurnet_pyg python=3.7.3 -y
+conda activate eurnet_pyg
 ```
 2. Install PyTorch with the [official instructions](https://pytorch.org/). For example:
 ```
@@ -82,21 +80,6 @@ datasets/
 ```
 After downloading and unzip the dataset, go to path `./datasets/ImageNet1K/ILSVRC/Data/val/` and move images to labeled sub-folders with [this script](https://raw.githubusercontent.com/soumith/imagenetloader.torch/master/valprep.sh).
 
-#### ImageNet-22K
-
-We also support [ImageNet22K](http://www.image-net.org/) for pre-training. We recommend symlink the dataset folder to `./datasets/imagenet22k/`. Move all images to the labeled sub-folders in the data path. Then, download the train-val split files ([ILSVRC2011fall_whole_map_train.txt](https://github.com/SwinTransformer/storage/releases/download/v2.0.1/ILSVRC2011fall_whole_map_train.txt)
-  & [ILSVRC2011fall_whole_map_val.txt](https://github.com/SwinTransformer/storage/releases/download/v2.0.1/ILSVRC2011fall_whole_map_val.txt)) and move to the data path.
-The folder structure should be:
-```bash
-datasets/
-  imagenet22k/
-    ILSVRC2011fall_whole_map_train.txt
-    ILSVRC2011fall_whole_map_val.txt
-    n00004475/
-    n00005787
-    ...
-```
-
 ## Launch Experiments
 
 We provide an easy yaml based configuration file system. The config could be modified by 
@@ -113,7 +96,7 @@ Sub module is seperated by `.`. For example, `optimizer.name=AdamW` modifies the
 A full example of training EurNet-T on ImageNet1K for 300 epochs:
 ```
 python3 launch.py --launch ./tools/train.py -c configs/classification/eurnet_tiny_1k_300eps.yaml \
-output_dir=./experiments/imagenet1k/EurNet-T/
+output_dir=./experiments/imagenet1k/EurNet-T-PyG/
 ```
 
 **Note that**, all the training configuration files are in `./configs/classification/`. To reproduce the ImageNet classification results, please **follow the corresponding config file**. 
