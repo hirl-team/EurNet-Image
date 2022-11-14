@@ -69,9 +69,9 @@ seed: 0
 
 autoresume: True
 resume: null
-pretrained: "./experiments/classification/imagenet22k/trial_eurnet_base_90eps/latest.pth"
+pretrained: "./experiments/classification/imagenet22k/eurnet_base_90eps/latest.pth"
 log_interval: 50
 save_interval: 5
 
-output_dir: "./experiments/classification/imagenet1k/trial_eurnet_base_22kto1k_384_ft_30eps/"
+output_dir: "./experiments/classification/imagenet1k/eurnet_base_22kto1k_384_ft_30eps/"
 dist_url: "env://"

@@ -70,5 +70,5 @@ pretrained: ""
 log_interval: 50
 save_interval: 5
 
-output_dir: "./experiments/classification/imagenet22k/trial_eurnet_base_90eps/"
+output_dir: "./experiments/classification/imagenet22k/eurnet_base_90eps/"
 dist_url: "env://"

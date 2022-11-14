@@ -70,5 +70,5 @@ pretrained: ""
 log_interval: 50
 save_interval: 10
 
-output_dir: "./experiments/classification/imagenet1k/trial_eurnet_tiny_300eps/"
+output_dir: "./experiments/classification/imagenet1k/eurnet_tiny_300eps/"
 dist_url: "env://"

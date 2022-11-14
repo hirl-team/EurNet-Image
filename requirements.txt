@@ -19,4 +19,4 @@ PyYAML
 torch-scatter
 torch-cluster
 torchdrug==0.1.3
-torchprofile
+fvcore
