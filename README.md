@@ -1,9 +1,7 @@
 # EurNet: Efficient Multi-Range Relational Modeling of Spatial Multi-Relational Data
 
 This repository provides the PyTorch implementation of the paper [EurNet: Efficient Multi-Range Relational Modeling of Spatial Multi-Relational Data]().
-This repository contains complete source code and model weights for the **image classification** experiments in the paper. 
-Currently, we release all source code and model weights of EurNet for *image modeling*. 
-The codes and model weights for *protein* and *knowledge graph* modeling will be released soon after refactor.
+This branch contains complete source code and model weights for the **object detection** experiments in the paper. 
 
 <p align="center">
   <img src="resources/eurnet.png"/> 
@@ -27,15 +25,17 @@ Here are the links to other applied domains/tasks of this project:
 
 ## Benchmark and Model Zoo
 
-|    Model     |   Training    | #Params. (M) | FLOPs (G) | IN-1K Top-1 (%) |                                                         Config                                                         |   Ckpt   |   Log   |
-|:------------:|:-------------:|:------------:|:------:|:---------------:|:----------------------------------------------------------------------------------------------------------------------:|:--------:|:-------:|
-|   EurNet-T   |  1K-scratch   | 29 | 4.6 |      82.3       |    [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_tiny_1k_300eps.yaml)     | [ckpt]() | [log]() |
-|   EurNet-S   |  1K-scratch   | 50 | 8.8 |      83.6       |    [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_small_1k_300eps.yaml)    | [ckpt]() | [log]() |
-|   EurNet-B   |  1K-scratch   | 89 | 15.6 |      84.1       |    [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_base_1k_300eps.yaml)     | [ckpt]() | [log]() |
-|   EurNet-B   | 22K-pretrain  | 89 | 15.6 |        -        |    [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_base_22k_90eps.yaml)     | [ckpt]() |    -    |
-| EurNet-B/384 | 224to384-tune | 90 | 46.6 | 85.4 | [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_base_1k_384_ft_30eps.yaml)  | [ckpt]() | [log]() |
-| EurNet-B | 22Kto1K-tune | 89 | 15.6 | 85.7 | [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_base_22kto1k_224_ft_30eps.yaml) | [ckpt]() | [log]() |
-| EurNet-B/384 | 22Kto1K-tune | 90 | 46.6 | 87.0 | [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_base_22kto1k_384_ft_30eps.yaml) | [ckpt]() | [log]() |
+The experiments are conducted with [Mask R-CNN](https://openaccess.thecvf.com/content_ICCV_2017/papers/He_Mask_R-CNN_ICCV_2017_paper.pdf).
+
+|    Model     |   Schedule    | #Params. (M) | FLOPs (G) | box mAP | mask mAP |                                                        Config                                                         |   Ckpt   |   Log   |
+|:------------:|:-----------:|:------------:|:------:|:-------:|:--------:|:----------------------------------------------------------------------------------------------------------------------:|:--------:|:-------:|
+|   EurNet-T   | 1x   | 49.8 | 271 |  46.1   |  41.6     |    [config](https://github.com/hirl-team/EurNet-Image/blob/det/detection/configs//mask_rcnn/mask_rcnn_eurnet_tiny_1x_coco.py)     | [ckpt]() | [log]() |
+|   EurNet-T   |  3x   | 49.8 | 271 |  47.8    |   42.9    |    [config](https://github.com/hirl-team/EurNet-Image/blob/det/detection/configs//mask_rcnn/mask_rcnn_eurnet_tiny_3x_coco.py)   | [ckpt]() | [log]() |
+|   EurNet-S   | 1x   | 72.8 | 364 |  48.4   |  43.2     |    [config](https://github.com/hirl-team/EurNet-Image/blob/det/detection/configs//mask_rcnn/mask_rcnn_eurnet_small_1x_coco.py)     | [ckpt]() | [log]() |
+|   EurNet-S   |  3x   | 72.8 | 364 |  49.4    |   44.0    |    [config](https://github.com/hirl-team/EurNet-Image/blob/det/detection/configs//mask_rcnn/mask_rcnn_eurnet_small_3x_coco.py)   | [ckpt]() | [log]() |
+|   EurNet-B   | 1x   | 112.1 | 506 |  49.3   |  43.9     |    [config](https://github.com/hirl-team/EurNet-Image/blob/det/detection/configs//mask_rcnn/mask_rcnn_eurnet_base_1x_coco.py)     | [ckpt]() | [log]() |
+|   EurNet-B   |  3x   | 112.1 | 506 |  50.1    |   44.5    |    [config](https://github.com/hirl-team/EurNet-Image/blob/det/detection/configs//mask_rcnn/mask_rcnn_eurnet_base_3x_coco.py)   | [ckpt]() | [log]() |
+
 
 ## Installation
 
@@ -59,80 +59,51 @@ conda install pytorch==1.10.0 torchvision==0.11.0 torchaudio==0.10.0 cudatoolkit
 ```
 pip install -r requirements.txt
 ```
+4. Install `mmcv` and `mmdetection` for object detection:
+```
+pip install mmcv-full==1.5.0 -f https://download.openmmlab.com/mmcv/dist/cu113/torch1.10.0/index.html
+pip install mmdet==2.25.0
+```
 
 ## Usage
 
 ### Prepare Dataset
 
-#### ImageNet-1K
+#### COCO
 
-We support ImageNet [ILSVRC 2012](http://www.image-net.org/challenges/LSVRC/2012/) for training from scratch or fine-tuning. 
-
-We recommend symlink the dataset folder to `./datasets/ImageNet1K`. The folder structure would be:
+COCO dataset is used for object detection and instance segmentation experiments. 
+Download train/val2017 splits from the [official website](https://cocodataset.org/#download). We recommend 
+symlink the dataset folder to `./detection/datasets/coco/`. The folder structure is expected to be:
 ```
-datasets/
-  ImageNet1K/
-    ILSVRC/
-      Annotations/
-      Data/
-        train/
-        val/
-      ImageSets/
-      meta/
-```
-After downloading and unzip the dataset, go to path `./datasets/ImageNet1K/ILSVRC/Data/val/` and move images to labeled sub-folders with [this script](https://raw.githubusercontent.com/soumith/imagenetloader.torch/master/valprep.sh).
-
-#### ImageNet-22K
-
-We also support [ImageNet22K](http://www.image-net.org/) for pre-training. We recommend symlink the dataset folder to `./datasets/imagenet22k/`. Move all images to the labeled sub-folders in the data path. Then, download the train-val split files ([ILSVRC2011fall_whole_map_train.txt](https://github.com/SwinTransformer/storage/releases/download/v2.0.1/ILSVRC2011fall_whole_map_train.txt)
-  & [ILSVRC2011fall_whole_map_val.txt](https://github.com/SwinTransformer/storage/releases/download/v2.0.1/ILSVRC2011fall_whole_map_val.txt)) and move to the data path.
-The folder structure should be:
-```bash
-datasets/
-  imagenet22k/
-    ILSVRC2011fall_whole_map_train.txt
-    ILSVRC2011fall_whole_map_val.txt
-    n00004475/
-    n00005787
-    ...
+detection/
+  datasets/
+    coco/
+      annotations/
+        instances_train2017.json
+        instances_val2017.json
+        ...
+      train2017/
+      val2017/
 ```
 
 ## Launch Experiments
 
-We provide an easy yaml based configuration file system. The config could be modified by 
-command line arguments.
+
+We follow `mmdetection` to use python based configuration file system. The config could be modified by command line arguments.
 
 To run an experiment:
 ```
-python3 launch.py --launch ./tools/train.py -c [config file] [config options]
+python3 ./detection/launch.py -c [config file] --output_dir [output directory] [config options]
 ```
-The config options are in "key=value" format. For example, `ouput_dir=your_path` and `batch_size=64`. 
-Sub module is seperated by `.`. For example, `optimizer.name=AdamW` modifies the sub key `name` in 
-`optimizer` with value `AdamW`.
+The config options are in "key=value" format. For example, `optimizer.type=AdamW` modifies the sub key `type` in `optimizer` with value `AdamW`.
 
-A full example of training EurNet-T on ImageNet1K for 300 epochs:
+A full example of training and evaluating EurNet-T with Mask-RCNN on COCO for 1x schedule (12 epochs):
 ```
-python3 launch.py --launch ./tools/train.py -c configs/classification/eurnet_tiny_1k_300eps.yaml \
-output_dir=./experiments/imagenet1k/EurNet-T/
+python3 ./detection/launch.py -c configs/mask_rcnn/mask_rcnn_eurnet_tiny_1x_coco.py \
+--output_dir ./experiments/coco/maskrcnn-1x/EurNet-T/ --pretrained [path of imagenet pretrained model]
 ```
 
-**Note that**, all the training configuration files are in `./configs/classification/`. To reproduce the ImageNet classification results, please **follow the corresponding config file**. 
-
-## Multinode training
-
-`launch.py` would automatically find a free port to launch single node experiments. 
-If multiple nodes training is necessary, the number of nodes `--nn`, node rank `--nr`, master port `--port` and master address `-ma` should be set. 
-
-Take training EurNet-T on ImageNet-1K with two nodes as an example, use the following commands at node1 and node2, respectively.
-```
-# use this command at node 1
-python3 launch.py --nn 2 --nr 0 --port [port] -ma [address of node 0] --launch ./tools/train.py \
--c configs/classification/eurnet_tiny_1k_300eps.yaml
-
-# use this command at node 2
-python3 launch.py --nn 2 --nr 1 --port [port] -ma [address of node 0] --launch ./tools/train.py \
--c configs/classification/eurnet_tiny_1k_300eps.yaml
-```
+**Note that**, the root of relative dir is `./detection`. All the training configuration files are in `./detection/configs/`. To reproduce the COCO object detection results, please **follow the corresponding config file**. 
 
 ## License
 
