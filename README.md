@@ -81,7 +81,7 @@ pip install mmsegmentation==2.25.0
 
 ADE20K dataset is used for semantic segmentation experiments. 
 Download train/val splits from this [link](http://data.csail.mit.edu/places/ADEchallenge/ADEChallengeData2016.zip). We recommend 
-symlink the dataset folder to `./segmentation/datasets/coco/`. The folder structure is expected to be:
+symlink the dataset folder to `./segmentation/datasets/ade20k/`. The folder structure is expected to be:
 ```
 segmentation/
   datasets/
