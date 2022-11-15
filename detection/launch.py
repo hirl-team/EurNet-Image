@@ -38,7 +38,6 @@ if __name__ == '__main__':
                         help='disable local logging')
     parser.add_argument('--master_address', '-ma', type=str, default="127.0.0.1")
     parser.add_argument('--pretrained', type=str, default="")
-    parser.add_argument('--arch', type=str, default='vit_base')
     parser.add_argument('--output_dir', type=str, default='./object_detection/coco/eurnet_base_default/')
     parser.add_argument('--config', '-c', type=str, default='./configs/mask_rcnn/mask_rcnn_eurnet_base_1x_coco.py')
 

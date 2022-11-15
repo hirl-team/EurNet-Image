@@ -10,8 +10,8 @@ This branch contains complete source code and model weights for the **object det
 EurNet employs the Gated Relational Message Passing (GRMP) layer as its basic component, as graphically shown above.
 EurNet can be applied to various domains (e.g., images, protein structures and knowledge graphs) for efficient multi-relational modeling at scale.
 Here are the links to other applied domains/tasks of this project:
-- [EurNet for Image Classification (PyTorch Geometric implementation)]()
-- [EurNet for Object Detection]()
+- [EurNet for Image Classification (TorchDrug implementation)](https://github.com/hirl-team/EurNet-Image/tree/main)
+- [EurNet for Image Classification (PyTorch Geometric implementation)](https://github.com/hirl-team/EurNet-Image/tree/pyg-cls)
 - [EurNet for Semantic Segmentation]()
 - EurNet for Protein Structure Modeling (*Working, will release soon*)
 - EurNet for Knowledge Graph Reasoning (*Working, will release soon*)
@@ -24,6 +24,16 @@ Here are the links to other applied domains/tasks of this project:
 - [ ] Release code and model weights of EurNet for knowledge graph reasoning. 
 
 ## Benchmark and Model Zoo
+
+### Pre-training on ImageNet-1K
+
+Following [FocalNet](https://arxiv.org/pdf/2203.11926), we fine-tune the models pre-trained on ImageNet-1K classification.
+The pre-trained checkpoints for EurNet-T/S/B can be downloaded with the following links:
+- [Pre-trained EurNet-T]()
+- [Pre-trained EurNet-S]()
+- [Pre-trained EurNet-B]()
+
+### Fine-tuning on COCO
 
 The experiments are conducted with [Mask R-CNN](https://openaccess.thecvf.com/content_ICCV_2017/papers/He_Mask_R-CNN_ICCV_2017_paper.pdf).
 
@@ -48,8 +58,8 @@ This repository is officially tested with the following environments:
 The environment could be prepared in the following steps:
 1. Create a virtual environment with conda:
 ```
-conda create -n eurnet python=3.7.3 -y
-conda activate eurnet
+conda create -n eurnet_det python=3.7.3 -y
+conda activate eurnet_det
 ```
 2. Install PyTorch with the [official instructions](https://pytorch.org/). For example:
 ```
@@ -88,7 +98,6 @@ detection/
 
 ## Launch Experiments
 
-
 We follow `mmdetection` to use python based configuration file system. The config could be modified by command line arguments.
 
 To run an experiment:
@@ -97,13 +106,14 @@ python3 ./detection/launch.py -c [config file] --output_dir [output directory] [
 ```
 The config options are in "key=value" format. For example, `optimizer.type=AdamW` modifies the sub key `type` in `optimizer` with value `AdamW`.
 
-A full example of training and evaluating EurNet-T with Mask-RCNN on COCO for 1x schedule (12 epochs):
+A full example of training and evaluating EurNet-T with Mask-RCNN on COCO for 1x schedule (12 epochs starting from an ImageNet-1K pre-trained checkpoint):
 ```
 python3 ./detection/launch.py -c configs/mask_rcnn/mask_rcnn_eurnet_tiny_1x_coco.py \
 --output_dir ./experiments/coco/maskrcnn-1x/EurNet-T/ --pretrained [path of imagenet pretrained model]
 ```
 
-**Note that**, the root of relative dir is `./detection`. All the training configuration files are in `./detection/configs/`. To reproduce the COCO object detection results, please **follow the corresponding config file**. 
+**Note that**, the root of relative dir is `./detection`. All the training configuration files are in `./detection/configs/`. 
+To reproduce the COCO object detection results, please **follow the corresponding config file** and **remember to load the ImageNet-1K pre-trained checkpoint**. 
 
 ## License
 
@@ -125,7 +135,8 @@ If you find this repository useful in your research, please cite the following p
 
 The development of this project is guided by the following open-source projects. 
 We would like to thank the authors for releasing the source code.
-- [Swin Transformer](https://github.com/microsoft/Swin-Transformer)
 - [FocalNet](https://github.com/microsoft/FocalNet)
+- [Swin Transformer Object Detection](https://github.com/SwinTransformer/Swin-Transformer-Object-Detection)
+- [Swin Transformer](https://github.com/microsoft/Swin-Transformer)
 - [ConvNeXt](https://github.com/facebookresearch/ConvNeXt)
 - [Vision GNN](https://github.com/huawei-noah/Efficient-AI-Backbones/tree/master/vig_pytorch)
