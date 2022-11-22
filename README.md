@@ -40,9 +40,9 @@ The input resolution is 512x512 and the schedule is 160k iterations.
 
 |    Model   | #Params. (M) | FLOPs (G) | mIoU | mIoU (MS) |                                                        Config                                                         |   Ckpt   |   Log   |
 |:------------:|:------------:|:------:|:-------:|:--------:|:----------------------------------------------------------------------------------------------------------------------:|:--------:|:-------:|
-|   EurNet-T   | 62 | 948 |  47.2   |  48.4 |    [config](https://github.com/hirl-team/EurNet-Image/blob/seg/segmentation/configs/eurnet/upernet_eurnet_tiny_512x512_160k_ade20k.py)     | [ckpt]() | [log]() |
-|   EurNet-S   | 85 | 1042 |  49.8   |  50.8 |    [config](https://github.com/hirl-team/EurNet-Image/blob/seg/segmentation/configs/eurnet/upernet_eurnet_small_512x512_160k_ade20k.py)     | [ckpt]() | [log]() |
-|   EurNet-B   | 126 | 1190 |  50.7   |  51.8     |    [config](https://github.com/hirl-team/EurNet-Image/blob/seg/segmentation/configs/eurnet/upernet_eurnet_base_512x512_160k_ade20k.py)     | [ckpt]() | [log]() |
+|   EurNet-T   | 62 | 948 |  47.2   |  48.4 |    [config](https://github.com/hirl-team/EurNet-Image/blob/seg/segmentation/configs/eurnet/upernet_eurnet_tiny_512x512_160k_ade20k.py)     | [ckpt](https://eurnet.s3.us-east-2.amazonaws.com/checkpoints/eurnet_tiny_upernet_ade20k_160k_last_epoch.pth) | [log](https://eurnet.s3.us-east-2.amazonaws.com/logs/eurnet_tiny_upernet_ade20k_160k.txt) |
+|   EurNet-S   | 85 | 1042 |  49.8   |  50.8 |    [config](https://github.com/hirl-team/EurNet-Image/blob/seg/segmentation/configs/eurnet/upernet_eurnet_small_512x512_160k_ade20k.py)     | [ckpt](https://eurnet.s3.us-east-2.amazonaws.com/checkpoints/eurnet_small_upernet_ade20k_160k_last_epoch.pth) | [log](https://eurnet.s3.us-east-2.amazonaws.com/logs/eurnet_small_upernet_ade20k_160k.txt) |
+|   EurNet-B   | 126 | 1190 |  50.7   |  51.8     |    [config](https://github.com/hirl-team/EurNet-Image/blob/seg/segmentation/configs/eurnet/upernet_eurnet_base_512x512_160k_ade20k.py)     | [ckpt](https://eurnet.s3.us-east-2.amazonaws.com/checkpoints/eurnet_base_upernet_ade20k_160k_last_epoch.pth) | [log](https://eurnet.s3.us-east-2.amazonaws.com/logs/eurnet_base_upernet_ade20k_160k.txt) |
 
 
 ## Installation
