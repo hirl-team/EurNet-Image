@@ -12,9 +12,9 @@ The codes and model weights for *protein* and *knowledge graph* modeling will be
 EurNet employs the Gated Relational Message Passing (GRMP) layer as its basic component, as graphically shown above.
 EurNet can be applied to various domains (e.g., images, protein structures and knowledge graphs) for efficient multi-relational modeling at scale.
 Here are the links to other applied domains/tasks of this project:
-- [EurNet for Image Classification (PyTorch Geometric implementation)]()
-- [EurNet for Object Detection]()
-- [EurNet for Semantic Segmentation]()
+- [EurNet for Image Classification (PyTorch Geometric implementation)](https://github.com/hirl-team/EurNet-Image/tree/pyg-cls)
+- [EurNet for Object Detection](https://github.com/hirl-team/EurNet-Image/tree/det)
+- [EurNet for Semantic Segmentation](https://github.com/hirl-team/EurNet-Image/tree/seg)
 - EurNet for Protein Structure Modeling (*Working, will release soon*)
 - EurNet for Knowledge Graph Reasoning (*Working, will release soon*)
 
@@ -29,13 +29,13 @@ Here are the links to other applied domains/tasks of this project:
 
 |    Model     |   Training    | #Params. (M) | FLOPs (G) | IN-1K Top-1 (%) |                                                         Config                                                         |   Ckpt   |   Log   |
 |:------------:|:-------------:|:------------:|:------:|:---------------:|:----------------------------------------------------------------------------------------------------------------------:|:--------:|:-------:|
-|   EurNet-T   |  1K-scratch   | 29 | 4.6 |      82.3       |    [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_tiny_1k_300eps.yaml)     | [ckpt]() | [log]() |
-|   EurNet-S   |  1K-scratch   | 50 | 8.8 |      83.6       |    [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_small_1k_300eps.yaml)    | [ckpt]() | [log]() |
-|   EurNet-B   |  1K-scratch   | 89 | 15.6 |      84.1       |    [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_base_1k_300eps.yaml)     | [ckpt]() | [log]() |
-|   EurNet-B   | 22K-pretrain  | 89 | 15.6 |        -        |    [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_base_22k_90eps.yaml)     | [ckpt]() |    -    |
-| EurNet-B/384 | 224to384-tune | 90 | 46.6 | 85.4 | [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_base_1k_384_ft_30eps.yaml)  | [ckpt]() | [log]() |
-| EurNet-B | 22Kto1K-tune | 89 | 15.6 | 85.7 | [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_base_22kto1k_224_ft_30eps.yaml) | [ckpt]() | [log]() |
-| EurNet-B/384 | 22Kto1K-tune | 90 | 46.6 | 87.0 | [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_base_22kto1k_384_ft_30eps.yaml) | [ckpt]() | [log]() |
+|   EurNet-T   |  1K-scratch   | 29 | 4.6 |      82.3       |    [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_tiny_1k_300eps.yaml)     | [ckpt](https://eurnet.s3.us-east-2.amazonaws.com/checkpoints/td_eurnet_tiny_1k_300eps_last_epoch.pth) | [log](https://eurnet.s3.us-east-2.amazonaws.com/logs/td_eurnet_tiny_1k_300eps_log.txt) |
+|   EurNet-S   |  1K-scratch   | 50 | 8.8 |      83.6       |    [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_small_1k_300eps.yaml)    | [ckpt](https://eurnet.s3.us-east-2.amazonaws.com/checkpoints/td_eurnet_small_1k_300eps_last_epoch.pth) | [log](https://eurnet.s3.us-east-2.amazonaws.com/logs/td_eurnet_small_1k_300eps_log.txt) |
+|   EurNet-B   |  1K-scratch   | 89 | 15.6 |      84.1       |    [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_base_1k_300eps.yaml)     | [ckpt](https://eurnet.s3.us-east-2.amazonaws.com/checkpoints/td_eurnet_base_1k_300eps_last_epoch.pth) | [log](https://eurnet.s3.us-east-2.amazonaws.com/logs/td_eurnet_base_1k_300eps_log.txt) |
+|   EurNet-B   | 22K-pretrain  | 89 | 15.6 |        -        |    [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_base_22k_90eps.yaml)     | [ckpt](https://eurnet.s3.us-east-2.amazonaws.com/checkpoints/td_eurnet_base_22k_pretrain.pth) |    -    |
+| EurNet-B/384 | 224to384-tune | 90 | 46.6 | 85.3 | [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_base_1k_384_ft_30eps.yaml)  | [ckpt](https://eurnet.s3.us-east-2.amazonaws.com/checkpoints/td_eurnet_base_1k_30eps_finetune_224to384_last_epoch.pth) | [log](https://eurnet.s3.us-east-2.amazonaws.com/logs/td_eurnet_base_1k_30eps_finetune_224to384_log.txt) |
+| EurNet-B | 22Kto1K-tune | 89 | 15.6 | 85.7 | [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_base_22kto1k_224_ft_30eps.yaml) | [ckpt](https://eurnet.s3.us-east-2.amazonaws.com/checkpoints/td_eurnet_base_22kto1k_30eps_finetune_224_last_epoch.pth) | [log](https://eurnet.s3.us-east-2.amazonaws.com/logs/td_eurnet_base_22kto1k_30eps_finetune_224_log.txt) |
+| EurNet-B/384 | 22Kto1K-tune | 90 | 46.6 | 87.0 | [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_base_22kto1k_384_ft_30eps.yaml) | [ckpt](https://eurnet.s3.us-east-2.amazonaws.com/checkpoints/td_eurnet_base_22kto1k_30eps_finetune_384_last_epoch.pth) | [log](https://eurnet.s3.us-east-2.amazonaws.com/logs/td_eurnet_base_22kto1k_30eps_finetune_384_log.txt) |
 
 ## Installation
 
