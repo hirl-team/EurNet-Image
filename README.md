@@ -12,8 +12,8 @@ EurNet employs the Gated Relational Message Passing (GRMP) layer as its basic co
 EurNet can be applied to various domains (e.g., images, protein structures and knowledge graphs) for efficient multi-relational modeling at scale.
 Here are the links to other applied domains/tasks of this project:
 - [EurNet for Image Classification (TorchDrug implementation)](https://github.com/hirl-team/EurNet-Image/tree/main)
-- [EurNet for Object Detection]()
-- [EurNet for Semantic Segmentation]()
+- [EurNet for Object Detection](https://github.com/hirl-team/EurNet-Image/tree/det)
+- [EurNet for Semantic Segmentation](https://github.com/hirl-team/EurNet-Image/tree/seg)
 - EurNet for Protein Structure Modeling (*Working, will release soon*)
 - EurNet for Knowledge Graph Reasoning (*Working, will release soon*)
 
@@ -28,12 +28,12 @@ Here are the links to other applied domains/tasks of this project:
 
 |        Model         |   Training    | #Params. (M) | FLOPs (G) | IN-1K Top-1 (%) |                                                         Config                                                         |   Ckpt   |   Log   |
 |:--------------------:|:-------------:|:------------:|:------:|:---------------:|:----------------------------------------------------------------------------------------------------------------------:|:--------:|:-------:|
-| EurNet-T (TorchDrug) |  1K-scratch   | 29 | 4.6 |      82.3       |    [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_tiny_1k_300eps.yaml)     | [ckpt]() | [log]() |
-|    EurNet-T (PyG)    |  1K-scratch   | 29 | 4.6 |      82.3       |    [config](https://github.com/hirl-team/EurNet-Image/blob/pyg-cls/configs/classification/eurnet_tiny_1k_300eps.yaml)     | [ckpt]() | [log]() |
-| EurNet-S (TorchDrug) |  1K-scratch   | 50 | 8.8 |      83.6       |    [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_small_1k_300eps.yaml)    | [ckpt]() | [log]() |
-|    EurNet-S (PyG)    |  1K-scratch   | 50 | 8.8 |      83.6       |    [config](https://github.com/hirl-team/EurNet-Image/blob/pyg-cls/configs/classification/eurnet_small_1k_300eps.yaml)    | [ckpt]() | [log]() |
-| EurNet-B (TorchDrug) |  1K-scratch   | 89 | 15.6 |      84.1       |    [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_base_1k_300eps.yaml)     | [ckpt]() | [log]() |
-|    EurNet-B (PyG)    |  1K-scratch   | 89 | 15.6 |      84.0       |    [config](https://github.com/hirl-team/EurNet-Image/blob/pyg-cls/configs/classification/eurnet_base_1k_300eps.yaml)     | [ckpt]() | [log]() |
+| EurNet-T (TorchDrug) |  1K-scratch   | 29 | 4.6 |      82.3       |    [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_tiny_1k_300eps.yaml)     | [ckpt](https://eurnet.s3.us-east-2.amazonaws.com/checkpoints/td_eurnet_tiny_1k_300eps_last_epoch.pth) | [log](https://eurnet.s3.us-east-2.amazonaws.com/logs/td_eurnet_tiny_1k_300eps_log.txt) |
+|    EurNet-T (PyG)    |  1K-scratch   | 29 | 4.6 |      82.3       |    [config](https://github.com/hirl-team/EurNet-Image/blob/pyg-cls/configs/classification/eurnet_tiny_1k_300eps.yaml)     | [ckpt](https://eurnet.s3.us-east-2.amazonaws.com/checkpoints/pyg_eurnet_tiny_1k_300eps_last_epoch.pth) | [log](https://eurnet.s3.us-east-2.amazonaws.com/logs/pyg_eurnet_tiny_1k_300eps_log.txt) |
+| EurNet-S (TorchDrug) |  1K-scratch   | 50 | 8.8 |      83.6       |    [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_small_1k_300eps.yaml)    | [ckpt](https://eurnet.s3.us-east-2.amazonaws.com/checkpoints/td_eurnet_small_1k_300eps_last_epoch.pth) | [log](https://eurnet.s3.us-east-2.amazonaws.com/logs/td_eurnet_small_1k_300eps_log.txt) |
+|    EurNet-S (PyG)    |  1K-scratch   | 50 | 8.8 |      83.6       |    [config](https://github.com/hirl-team/EurNet-Image/blob/pyg-cls/configs/classification/eurnet_small_1k_300eps.yaml)    | [ckpt](https://eurnet.s3.us-east-2.amazonaws.com/checkpoints/pyg_eurnet_small_1k_300eps_last_epoch.pth) | [log](https://eurnet.s3.us-east-2.amazonaws.com/logs/pyg_eurnet_small_1k_300eps_log.txt) |
+| EurNet-B (TorchDrug) |  1K-scratch   | 89 | 15.6 |      84.1       |    [config](https://github.com/hirl-team/EurNet-Image/blob/main/configs/classification/eurnet_base_1k_300eps.yaml)     | [ckpt](https://eurnet.s3.us-east-2.amazonaws.com/checkpoints/td_eurnet_base_1k_300eps_last_epoch.pth) | [log](https://eurnet.s3.us-east-2.amazonaws.com/logs/td_eurnet_base_1k_300eps_log.txt) |
+|    EurNet-B (PyG)    |  1K-scratch   | 89 | 15.6 |      84.0       |    [config](https://github.com/hirl-team/EurNet-Image/blob/pyg-cls/configs/classification/eurnet_base_1k_300eps.yaml)     | [ckpt](https://eurnet.s3.us-east-2.amazonaws.com/checkpoints/pyg_eurnet_base_1k_300eps_last_epoch.pth) | [log](https://eurnet.s3.us-east-2.amazonaws.com/logs/pyg_eurnet_base_1k_300eps_log.txt) |
 
 ## Installation
 
