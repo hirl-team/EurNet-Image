@@ -12,7 +12,7 @@ EurNet can be applied to various domains (e.g., images, protein structures and k
 Here are the links to other applied domains/tasks of this project:
 - [EurNet for Image Classification (TorchDrug implementation)](https://github.com/hirl-team/EurNet-Image/tree/main)
 - [EurNet for Image Classification (PyTorch Geometric implementation)](https://github.com/hirl-team/EurNet-Image/tree/pyg-cls)
-- [EurNet for Semantic Segmentation]()
+- [EurNet for Semantic Segmentation](https://github.com/hirl-team/EurNet-Image/tree/seg)
 - EurNet for Protein Structure Modeling (*Working, will release soon*)
 - EurNet for Knowledge Graph Reasoning (*Working, will release soon*)
 
@@ -29,9 +29,9 @@ Here are the links to other applied domains/tasks of this project:
 
 Following [FocalNet](https://arxiv.org/pdf/2203.11926), we fine-tune the models pre-trained on ImageNet-1K classification.
 The pre-trained checkpoints for EurNet-T/S/B can be downloaded with the following links:
-- [Pre-trained EurNet-T]()
-- [Pre-trained EurNet-S]()
-- [Pre-trained EurNet-B]()
+- [Pre-trained EurNet-T](https://eurnet.s3.us-east-2.amazonaws.com/checkpoints/td_eurnet_tiny_1k_pretrain.pth)
+- [Pre-trained EurNet-S](https://eurnet.s3.us-east-2.amazonaws.com/checkpoints/td_eurnet_small_1k_pretrain.pth)
+- [Pre-trained EurNet-B](https://eurnet.s3.us-east-2.amazonaws.com/checkpoints/td_eurnet_base_1k_pretrain.pth)
 
 ### Fine-tuning on COCO
 
@@ -39,12 +39,12 @@ The experiments are conducted with [Mask R-CNN](https://openaccess.thecvf.com/co
 
 |    Model     |   Schedule    | #Params. (M) | FLOPs (G) | box mAP | mask mAP |                                                        Config                                                         |   Ckpt   |   Log   |
 |:------------:|:-----------:|:------------:|:------:|:-------:|:--------:|:----------------------------------------------------------------------------------------------------------------------:|:--------:|:-------:|
-|   EurNet-T   | 1x   | 49.8 | 271 |  46.1   |  41.6     |    [config](https://github.com/hirl-team/EurNet-Image/blob/det/detection/configs//mask_rcnn/mask_rcnn_eurnet_tiny_1x_coco.py)     | [ckpt]() | [log]() |
-|   EurNet-T   |  3x   | 49.8 | 271 |  47.8    |   42.9    |    [config](https://github.com/hirl-team/EurNet-Image/blob/det/detection/configs//mask_rcnn/mask_rcnn_eurnet_tiny_3x_coco.py)   | [ckpt]() | [log]() |
-|   EurNet-S   | 1x   | 72.8 | 364 |  48.4   |  43.2     |    [config](https://github.com/hirl-team/EurNet-Image/blob/det/detection/configs//mask_rcnn/mask_rcnn_eurnet_small_1x_coco.py)     | [ckpt]() | [log]() |
-|   EurNet-S   |  3x   | 72.8 | 364 |  49.4    |   44.0    |    [config](https://github.com/hirl-team/EurNet-Image/blob/det/detection/configs//mask_rcnn/mask_rcnn_eurnet_small_3x_coco.py)   | [ckpt]() | [log]() |
-|   EurNet-B   | 1x   | 112.1 | 506 |  49.3   |  43.9     |    [config](https://github.com/hirl-team/EurNet-Image/blob/det/detection/configs//mask_rcnn/mask_rcnn_eurnet_base_1x_coco.py)     | [ckpt]() | [log]() |
-|   EurNet-B   |  3x   | 112.1 | 506 |  50.1    |   44.5    |    [config](https://github.com/hirl-team/EurNet-Image/blob/det/detection/configs//mask_rcnn/mask_rcnn_eurnet_base_3x_coco.py)   | [ckpt]() | [log]() |
+|   EurNet-T   | 1x   | 49.8 | 271 |  46.1   |  41.6     |    [config](https://github.com/hirl-team/EurNet-Image/blob/det/detection/configs//mask_rcnn/mask_rcnn_eurnet_tiny_1x_coco.py)     | [ckpt](https://eurnet.s3.us-east-2.amazonaws.com/checkpoints/eurnet_tiny_mask_rcnn_coco_1x_last_epoch.pth) | [log](https://eurnet.s3.us-east-2.amazonaws.com/logs/eurnet_tiny_mask_rcnn_coco_1x.txt) |
+|   EurNet-T   |  3x   | 49.8 | 271 |  47.8    |   42.9    |    [config](https://github.com/hirl-team/EurNet-Image/blob/det/detection/configs//mask_rcnn/mask_rcnn_eurnet_tiny_3x_coco.py)   | [ckpt](https://eurnet.s3.us-east-2.amazonaws.com/checkpoints/eurnet_tiny_mask_rcnn_coco_3x_last_epoch.pth) | [log](https://eurnet.s3.us-east-2.amazonaws.com/logs/eurnet_tiny_mask_rcnn_coco_3x.txt) |
+|   EurNet-S   | 1x   | 72.8 | 364 |  48.4   |  43.2     |    [config](https://github.com/hirl-team/EurNet-Image/blob/det/detection/configs//mask_rcnn/mask_rcnn_eurnet_small_1x_coco.py)     | [ckpt](https://eurnet.s3.us-east-2.amazonaws.com/checkpoints/eurnet_small_mask_rcnn_coco_1x_last_epoch.pth) | [log](https://eurnet.s3.us-east-2.amazonaws.com/logs/eurnet_small_mask_rcnn_coco_1x.txt) |
+|   EurNet-S   |  3x   | 72.8 | 364 |  49.4    |   44.0    |    [config](https://github.com/hirl-team/EurNet-Image/blob/det/detection/configs//mask_rcnn/mask_rcnn_eurnet_small_3x_coco.py)   | [ckpt](https://eurnet.s3.us-east-2.amazonaws.com/checkpoints/eurnet_small_mask_rcnn_coco_3x_last_epoch.pth) | [log](https://eurnet.s3.us-east-2.amazonaws.com/logs/eurnet_small_mask_rcnn_coco_3x.txt) |
+|   EurNet-B   | 1x   | 112.1 | 506 |  49.3   |  43.9     |    [config](https://github.com/hirl-team/EurNet-Image/blob/det/detection/configs//mask_rcnn/mask_rcnn_eurnet_base_1x_coco.py)     | [ckpt](https://eurnet.s3.us-east-2.amazonaws.com/checkpoints/eurnet_base_mask_rcnn_coco_1x_latest.pth) | [log](https://eurnet.s3.us-east-2.amazonaws.com/logs/eurnet_base_mask_rcnn_coco_1x.txt) |
+|   EurNet-B   |  3x   | 112.1 | 506 |  50.1    |   44.5    |    [config](https://github.com/hirl-team/EurNet-Image/blob/det/detection/configs//mask_rcnn/mask_rcnn_eurnet_base_3x_coco.py)   | [ckpt](https://eurnet.s3.us-east-2.amazonaws.com/checkpoints/eurnet_base_mask_rcnn_coco_3x_latest.pth) | [log](https://eurnet.s3.us-east-2.amazonaws.com/logs/eurnet_base_mask_rcnn_coco_3x.txt) |
 
 
 ## Installation
