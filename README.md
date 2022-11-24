@@ -1,6 +1,6 @@
 # EurNet: Efficient Multi-Range Relational Modeling of Spatial Multi-Relational Data
 
-This repository provides the PyTorch implementation of the paper [EurNet: Efficient Multi-Range Relational Modeling of Spatial Multi-Relational Data]().
+This repository provides the PyTorch implementation of the paper [EurNet: Efficient Multi-Range Relational Modeling of Spatial Multi-Relational Data](https://arxiv.org/pdf/2211.12941.pdf).
 This repository contains complete source code and model weights for the **image classification** experiments in the paper. 
 Currently, we release all source code and model weights of EurNet for *image modeling*. 
 The codes and model weights for *protein* and *knowledge graph* modeling will be released soon after refactor.
@@ -19,7 +19,7 @@ Here are the links to other applied domains/tasks of this project:
 - EurNet for Knowledge Graph Reasoning (*Working, will release soon*)
 
 ## Roadmap
-- [2022/11/xx] The initial release! We release all source code and model weights of EurNet for image classification (both TorchDrug and PyTorch Geometric implementations), object detection and semantic segmentation. 
+- [2022/11/24] The initial release! We release all source code and model weights of EurNet for image classification (both TorchDrug and PyTorch Geometric implementations), object detection and semantic segmentation. 
 
 ## TODO
 - [ ] Release code and model weights of EurNet for protein structure modeling.
@@ -145,7 +145,7 @@ If you find this repository useful in your research, please cite the following p
 @article{xu2022eurnet,
   title={EurNet: Efficient Multi-Range Relational Modeling of Spatial Multi-Relational Data},
   author={Xu, Minghao and Guo, Yuanfan and Xu, Yi and Tang, Jian and Chen, Xinlei and Tian, Yuandong},
-  journal={arXiv preprint arXiv:},
+  journal={arXiv preprint arXiv:2211.12941},
   year={2022}
 }
 ```
