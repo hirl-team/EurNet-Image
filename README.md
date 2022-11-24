@@ -1,6 +1,6 @@
 # EurNet: Efficient Multi-Range Relational Modeling of Spatial Multi-Relational Data
 
-This repository provides the PyTorch implementation of the paper [EurNet: Efficient Multi-Range Relational Modeling of Spatial Multi-Relational Data]().
+This repository provides the PyTorch implementation of the paper [EurNet: Efficient Multi-Range Relational Modeling of Spatial Multi-Relational Data](https://arxiv.org/pdf/2211.12941.pdf).
 This branch contains complete source code and model weights for the **semantic segmentation** experiments in the paper. 
 
 <p align="center">
@@ -17,7 +17,7 @@ Here are the links to other applied domains/tasks of this project:
 - EurNet for Knowledge Graph Reasoning (*Working, will release soon*)
 
 ## Roadmap
-- [2022/11/xx] The initial release! We release all source code and model weights of EurNet for image classification (both TorchDrug and PyTorch Geometric implementations), object detection and semantic segmentation. 
+- [2022/11/24] The initial release! We release all source code and model weights of EurNet for image classification (both TorchDrug and PyTorch Geometric implementations), object detection and semantic segmentation. 
 
 ## TODO
 - [ ] Release code and model weights of EurNet for protein structure modeling.
@@ -40,10 +40,9 @@ The input resolution is 512x512 and the schedule is 160k iterations.
 
 |    Model   | #Params. (M) | FLOPs (G) | mIoU | mIoU (MS) |                                                        Config                                                         |   Ckpt   |   Log   |
 |:------------:|:------------:|:------:|:-------:|:--------:|:----------------------------------------------------------------------------------------------------------------------:|:--------:|:-------:|
-|   EurNet-T   | 62 | 948 |  47.2   |  48.4 |    [config](https://github.com/hirl-team/EurNet-Image/blob/seg/segmentation/configs/eurnet/upernet_eurnet_tiny_512x512_160k_ade20k.py)     | [ckpt]() | [log]() |
-|   EurNet-S   | 85 | 1042 |  49.8   |  50.8 |    [config](https://github.com/hirl-team/EurNet-Image/blob/seg/segmentation/configs/eurnet/upernet_eurnet_small_512x512_160k_ade20k.py)     | [ckpt]() | [log]() |
-|   EurNet-B   | 126 | 1190 |  50.7   |  51.8     |    [config](https://github.com/hirl-team/EurNet-Image/blob/seg/segmentation/configs/eurnet/upernet_eurnet_base_512x512_160k_ade20k.py)     | [ckpt]() | [log]() |
-
+|   EurNet-T   | 62 | 948 |  47.2   |  48.4 |    [config](https://github.com/hirl-team/EurNet-Image/blob/seg/segmentation/configs/eurnet/upernet_eurnet_tiny_512x512_160k_ade20k.py)     | [ckpt](https://eurnet.s3.us-east-2.amazonaws.com/checkpoints/eurnet_tiny_upernet_ade20k_160k_last_epoch.pth) | [log](https://eurnet.s3.us-east-2.amazonaws.com/logs/eurnet_tiny_upernet_ade20k_160k.txt) |
+|   EurNet-S   | 85 | 1042 |  49.8   |  50.8 |    [config](https://github.com/hirl-team/EurNet-Image/blob/seg/segmentation/configs/eurnet/upernet_eurnet_small_512x512_160k_ade20k.py)     | [ckpt](https://eurnet.s3.us-east-2.amazonaws.com/checkpoints/eurnet_small_upernet_ade20k_160k_last_epoch.pth) | [log](https://eurnet.s3.us-east-2.amazonaws.com/logs/eurnet_small_upernet_ade20k_160k.txt) |
+|   EurNet-B   | 126 | 1190 |  50.7   |  51.8     |    [config](https://github.com/hirl-team/EurNet-Image/blob/seg/segmentation/configs/eurnet/upernet_eurnet_base_512x512_160k_ade20k.py)     | [ckpt](https://eurnet.s3.us-east-2.amazonaws.com/checkpoints/eurnet_base_upernet_ade20k_160k_last_epoch.pth) | [log](https://eurnet.s3.us-east-2.amazonaws.com/logs/eurnet_base_upernet_ade20k_160k.txt) |
 
 ## Installation
 
@@ -128,7 +127,7 @@ If you find this repository useful in your research, please cite the following p
 @article{xu2022eurnet,
   title={EurNet: Efficient Multi-Range Relational Modeling of Spatial Multi-Relational Data},
   author={Xu, Minghao and Guo, Yuanfan and Xu, Yi and Tang, Jian and Chen, Xinlei and Tian, Yuandong},
-  journal={arXiv preprint arXiv:},
+  journal={arXiv preprint arXiv:2211.12941},
   year={2022}
 }
 ```
